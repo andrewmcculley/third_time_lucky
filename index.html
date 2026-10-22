@@ -1,16 +1,206 @@
-<!doctype html><html lang="en-NZ"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PLACES NEAR AUCKLAND THAT ARE NOT HAMILTON.</title><style>
-*{box-sizing:border-box}body{margin:0;background:#faf9f5;color:#17324d;font:15px/1.55 system-ui,sans-serif}header{background:#12354a;color:white;padding:24px;overflow:hidden}h1{font-family:Impact,"Arial Narrow",sans-serif;white-space:nowrap;line-height:1.12;margin:0;width:max-content;transform-origin:left center;font-size:88px;letter-spacing:-.025em}.layout{display:grid;grid-template-columns:290px minmax(0,1fr)}aside{padding:20px;border-right:1px solid #dbe2df}input{width:100%;padding:11px;border:1px solid #c7d7d4;border-radius:8px;background:white;font:inherit}.filters{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}button{font:inherit;cursor:pointer}.filter,.reset{border:1px solid #c7d7d4;background:white;border-radius:18px;padding:5px 10px;color:#17324d}.filter.active{background:#167d7b;color:white}.reset{font-size:12px}#count{font-size:12px;color:#5b707b}.trip{display:block;width:100%;text-align:left;background:white;border:1px solid #dbe2df;border-radius:12px;padding:14px;margin:10px 0;color:#17324d}.trip.active{border:2px solid #167d7b;background:#edf5f1}.trip strong{display:block;font-size:16px}.trip small{color:#5b707b}.media{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);height:420px}.mapWrap,.photo{position:relative;min-width:0;height:420px;background:#e4ece8;overflow:hidden}.mapWrap{border-right:2px solid white}iframe{width:100%;height:100%;border:0;display:block}.photo{margin:0}.photo img{width:100%;height:100%;object-fit:cover;display:block}.photo img[hidden]{display:none}.photo figcaption{position:absolute;bottom:0;left:0;right:0;background:#12354adb;padding:8px 12px;color:white;font-size:11px}.photo a{color:white}.fallback{position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:20px}.fallback[hidden]{display:none}.fallback a{color:#145d5b}.maplink{position:absolute;bottom:12px;left:12px;padding:7px 10px;background:white;border-radius:7px;color:#17324d;font-size:11px}.detail{padding:25px;max-width:1200px}.detail h2{font-size:30px;line-height:1.2;margin:0 0 10px}.intro{color:#5b707b;margin-top:0}.stats{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.stat{padding:9px 14px;background:#edf3ef;border-radius:8px}.stat small{display:block;color:#5b707b}.columns{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{border:1px solid #dbe2df;border-radius:12px;padding:18px;background:white}h3{margin:0 0 10px;font-size:18px}.panel p{margin:8px 0}.food{padding:9px 0;border-top:1px solid #e0e7e3}.food p{margin:3px 0;font-size:14px}.food small{display:block;font-size:12px;color:#627477}.food a,a{color:#146c66}.note{font-size:12px;color:#627477}.actions{display:flex;gap:12px;margin-top:18px}.actions a,.actions button{border:1px solid #c7d7d4;border-radius:8px;padding:8px 12px;background:white;color:#146c66;text-decoration:none}.empty{padding:30px}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #d3972f;outline-offset:3px}@media(max-width:850px){.layout{grid-template-columns:1fr}aside{border-right:0;padding:14px}.triplist{display:flex;gap:10px;overflow:auto}.trip{min-width:210px;max-width:210px;margin:0}.media,.mapWrap,.photo{height:330px}.detail{padding:20px}}@media(max-width:550px){header{padding:20px 12px}.columns{grid-template-columns:1fr}.media,.mapWrap,.photo{height:260px}.detail h2{font-size:26px}.photo figcaption{font-size:10px}.maplink{font-size:10px;padding:5px;left:6px}.stats{font-size:13px}}@media print{aside,.media,.actions{display:none}.layout{display:block}.columns{display:block}.panel{margin-bottom:12px}header{background:white;color:#17324d}}
-</style></head><body><header><h1>PLACES NEAR AUCKLAND THAT ARE NOT HAMILTON.</h1></header><div class="layout"><aside><input id="search" aria-label="Search trips" placeholder="Search places or food"><div class="filters"><button class="filter active" data-filter="All">All</button><button class="filter" data-filter="Coast">Coast</button><button class="filter" data-filter="Lake">Lakes</button><button class="filter" data-filter="Walking">Walking</button><button class="filter" data-filter="Town">Town</button></div><button id="reset" class="reset">Reset</button><p id="count" aria-live="polite"></p><div id="list" class="triplist"></div><p class="note">Drive times are estimates from the original guide. Check conditions and bookings.</p></aside><main><div class="media"><div class="mapWrap"><iframe id="map" title="OpenStreetMap destination map" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><a id="maplink" class="maplink" target="_blank" rel="noopener">Open OpenStreetMap</a></div><figure class="photo"><img id="photo" alt="" hidden><div id="fallback" class="fallback">Loading location photo...</div><figcaption><a id="credit" target="_blank" rel="noopener">Location photo</a></figcaption></figure></div><section id="detail" class="detail" aria-live="polite"></section></main></div><script>
-const trips=[{"name": "Tāwharanui Regional Park", "lat": -36.373, "lng": 174.844, "cat": ["coast"], "drive": "About 1½ hr", "distance": "~90 km", "stay": "Auckland Council campground", "effort": "Low", "tag": "Closest coastal reset", "query": "Tawharanui Regional Park campground New Zealand", "intro": "Beach, coastal walks and a Matakana lunch.", "sights": ["Anchor Bay", "Coastal walks", "Matakana food stops"], "watch": "Book the campground. Check current park access and swimming advice.", "url": "https://www.aucklandcouncil.govt.nz/parks-recreation/stay-at-park/Pages/default.aspx", "category": "Coast", "nights": "1–2 nights", "foodnote": "Brewery lunch, estuary-side brunch, then gelato.", "wiki": "Tāwharanui Peninsula", "foods": [["Sawmill Brewery + Smoko Room", "Craft beer and sharing plates. The long-lunch pick.", "https://www.sawmillbrewery.co.nz/pages/smoko-room", "Route estimate not verified. Check before making a separate outing."], ["The Farmers Daughter", "Estuary-side brunch or lunch.", "https://thefarmersdaughteromaha.co.nz/the-daughter/", "Route estimate not verified. Check before making a separate outing."], ["Charlies Gelato", "A garden stop for gelato on the way home.", "https://www.charliesgelato.co.nz/", "Route estimate not verified. Check before making a separate outing."]]}, {"name": "Otamure Bay, Whananaki", "lat": -35.49228157, "lng": 174.46135262, "cat": ["coast"], "drive": "About 3¼ hr", "distance": "~225 km", "stay": "DOC campsite", "effort": "Low", "tag": "Northland beach camp", "query": "Otamure Bay Campsite Whananaki New Zealand", "intro": "A beach-first weekend. Arrive stocked and stay put.", "sights": ["Beachfront camping", "Coastal walks", "An unhurried day at camp"], "watch": "Book ahead. Check gate hours and campsite rules.", "url": "https://www.doc.govt.nz/parks-and-recreation/places-to-go/northland/places/whananaki-area/things-to-do/otamure-bay-whananaki-campsite/", "category": "Coast", "nights": "2 nights", "foodnote": "BYO everything. Easy camp dinners, breakfast and beach-day snacks.", "wiki": "Whananaki", "foods": []}, {"name": "Waikawau Bay", "lat": -36.60586488, "lng": 175.53701524, "cat": ["coast"], "drive": "About 4½ hr", "distance": "~265 km", "stay": "DOC campsite", "effort": "Low", "tag": "Remote Coromandel coast", "query": "Waikawau Bay Campsite Coromandel New Zealand", "intro": "A longer coastal stay where the campsite is the destination.", "sights": ["Waikawau Bay beach", "Bush walks", "Time at camp"], "watch": "Book ahead and check the winding gravel-road approach. Carry all campsite meals.", "url": "https://www.doc.govt.nz/parks-and-recreation/places-to-go/coromandel/places/northern-coromandel/things-to-do/waikawau-bay-campsite/", "category": "Coast", "nights": "3 nights", "foodnote": "One food pick.", "wiki": "Waikawau Bay", "foods": [["Luke’s Kitchen", "Iconic woodfired pizza and laid-back coastal vibes. Kuaotunu is a separate outing, not beside camp.", "https://www.lukeskitchen.co.nz/home-1", "Driving distance and time from Waikawau Bay campsite not verified. Check the route before planning this outing."]]}, {"name": "The Pinnacles", "lat": -36.955, "lng": 175.651, "cat": ["tramp"], "drive": "About 2½ hr", "distance": "~145 km", "stay": "Pinnacles Hut or DOC valley camps", "effort": "Medium-high", "tag": "Best overnight tramp", "query": "Pinnacles Hut Kauaeranga Valley New Zealand", "intro": "An overnight walk, not a drive-up stay.", "sights": ["Kauaeranga Kauri Trail", "Pinnacles Hut", "Optional summit in suitable conditions"], "watch": "Book the hut. Check weather and track alerts. Drive to the road end, not the hut.", "url": "https://www.doc.govt.nz/parks-and-recreation/places-to-go/coromandel/places/coromandel-forest-park/kauaeranga-valley/", "category": "Walking", "nights": "1 night", "foodnote": "BYO all meals and trail snacks.", "wiki": "The Pinnacles (Coromandel)", "foods": []}, {"name": "Raglan / Whāingaroa", "lat": -37.801, "lng": 174.87, "cat": ["coast", "town"], "drive": "About 2¼ hr", "distance": "~155 km", "stay": "Raglan Holiday Park Papahua", "effort": "Low", "tag": "Surf plus town", "query": "Raglan Holiday Park Papahua New Zealand", "intro": "Coffee, beach time and plenty of places to eat.", "sights": ["Harbour and town", "Coastal outings", "A meal out"], "watch": "Book your stay. Check local surf and water conditions.", "url": "https://raglanholidaypark.co.nz/", "category": "Town", "nights": "2 nights", "foodnote": "Coffee, brunch and evenings out.", "wiki": "Raglan, New Zealand", "foods": [["Raglan Roast", "No-fuss surf-town coffee.", "https://raglanroast.co.nz/", ""], ["The Shack", "The brunch anchor.", "https://www.theshackraglan.com/", ""], ["ULO’s Kitchen", "Japanese fusion, cocktails and music.", "https://www.facebook.com/people/ULOs-Kitchen/100032739831290/", ""], ["George’s Beach Club", "Outdoor pizza and cocktails.", "https://www.facebook.com/georgesbeachclubraglan/", ""], ["ISO", "Cocktails and a more dressed-up dinner.", "https://www.isobarraglan.nz/", ""], ["WYLD", "Fresh daytime food.", "https://www.wyldraglan.nz/", ""], ["Rock-it Kitchen", "A wool-shed setting and a sunny deck.", "https://rockitraglan.co.nz/", "A separate drive from the holiday park. Route estimate not verified."]]}, {"name": "Rotorua and Lake Ōkareka", "lat": -38.16203748, "lng": 176.36073025, "cat": ["lake", "town"], "drive": "About 3¼ hr", "distance": "~235 km", "stay": "DOC Lake Ōkareka Campsite", "effort": "Low", "tag": "Lake with city back-up", "query": "Lake Okareka Campsite New Zealand", "intro": "A lakeside base with Rotorua nearby.", "sights": ["Lake time", "Lakeside walks", "An optional Okere Falls outing"], "watch": "Check campsite arrangements and water advice. Have a backup stay.", "url": "https://www.doc.govt.nz/parks-and-recreation/places-to-go/bay-of-plenty/places/lake-okareka-scenic-reserve/things-to-do/lake-okareka-campsite/", "category": "Lake", "nights": "2 nights", "foodnote": "A separate food outing, not the cafe beside camp.", "wiki": "Lake Ōkareka", "foods": [["Okere Falls Store + Craft Beer Garden", "Coffee, burgers and toasties, then a beer-garden afternoon.", "https://okerefallsstore.co.nz/", "From Lake Okareka: approx. 33 km / 40 min one way; 66 km / 1 hr 20 min return. Area-to-area estimate."]]}, {"name": "Ohakune and southern Ruapehu", "lat": -39.416, "lng": 175.413, "cat": ["tramp", "town"], "drive": "About 4½ hr", "distance": "~345 km", "stay": "Ohakune accommodation: choose and book a stay", "effort": "Variable", "tag": "Tracks with town comforts", "query": "Ohakune New Zealand", "intro": "Old Coach Road and coffee at the station.", "sights": ["Old Coach Road", "Railway heritage", "Ohakune town"], "watch": "Choose and book an Ohakune stay. A one-way trail needs a return plan.", "url": "https://www.doc.govt.nz/parks-and-recreation/places-to-go/central-north-island/places/tongariro-national-park/things-to-do/tracks/ohakune-old-coach-road/", "category": "Walking", "nights": "3 nights", "foodnote": "Station coffee; self-cater the rest.", "wiki": "Ohakune railway station", "foods": [["Opus Fresh / station espresso bar", "Heritage railway station, coffee and outdoor gear.", "https://www.visitruapehu.com/see-do/eat-drink-shop/opus-fresh", ""]]}, {"name": "Mimiwhangata / Waikahoa Bay", "lat": -35.442443, "lng": 174.412042, "cat": ["coast", "alternative"], "drive": "Allow a long Northland drive", "distance": "48 km NE of Whangārei", "stay": "DOC Waikahoa Bay Campsite", "effort": "Low", "tag": "Alternative • carry-in coast", "query": "Waikahoa Bay Campsite Mimiwhangata New Zealand", "intro": "A carry-in beach camp. Settle in and stay put.", "sights": ["Waikahoa Bay", "Coastal surroundings", "Beach picnics"], "watch": "Confirm seasonal opening and book. Carry all gear over the hill.", "url": "https://www.doc.govt.nz/parks-and-recreation/places-to-go/northland/places/mimiwhangata-coastal-park/things-to-do/waikahoa-bay-campsite/", "category": "Coast", "nights": "3 nights", "foodnote": "BYO all meals. Pack for carrying, not unloading beside the tent.", "wiki": "Mimiwhangata", "foods": []}];
-const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));let selected=0,filter='All',photoToken=0;const photoCache=new Map();
-function fitHeading(){const h=document.querySelector('h1'),header=h.parentElement,style=getComputedStyle(header),w=header.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);h.style.fontSize='88px';let size=88;while(h.scrollWidth>w&&size>8){size-=.5;h.style.fontSize=size+'px'}h.style.transform='scaleY(1.7)';header.style.paddingTop=Math.max(20,size*.55)+'px';header.style.paddingBottom=Math.max(20,size*.55)+'px'}
-function matches(){const q=$('search').value.trim().toLowerCase();return trips.map((t,i)=>({t,i})).filter(({t})=>(filter==='All'||t.category===filter)&&(!q||JSON.stringify([t.name,t.foods,t.sights]).toLowerCase().includes(q)))}
-function renderList(){const v=matches();$('count').textContent=v.length+' places';$('list').innerHTML=v.map(({t,i})=>`<button class="trip ${i===selected?'active':''}" data-trip="${i}" aria-pressed="${i===selected}"><strong>${esc(t.name)}</strong><small>${esc(t.drive)} · ${esc(t.nights)}</small></button>`).join('');document.querySelectorAll('[data-trip]').forEach(b=>b.onclick=()=>selectTrip(Number(b.dataset.trip)))}
-function setMap(t){const span=.065,bbox=[t.lng-span,t.lat-span*.65,t.lng+span,t.lat+span*.65].join(',');$('map').src='https://www.openstreetmap.org/export/embed.html?bbox='+encodeURIComponent(bbox)+'&layer=mapnik&marker='+encodeURIComponent(t.lat+','+t.lng);$('maplink').href='https://www.openstreetmap.org/?mlat='+t.lat+'&mlon='+t.lng+'#map=12/'+t.lat+'/'+t.lng}
-async function locationPhoto(t){const token=++photoToken,img=$('photo'),fallback=$('fallback'),credit=$('credit');img.hidden=true;fallback.hidden=false;fallback.textContent='Loading location photo...';const article='https://en.wikipedia.org/wiki/'+encodeURIComponent(t.wiki.replaceAll(' ','_'));credit.textContent=t.name+' · photo source';credit.href=article;
- try{let data=photoCache.get(t.wiki);if(!data){const u='https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&prop=pageimages|info&inprop=url&piprop=thumbnail&pithumbsize=1200&redirects=1&titles='+encodeURIComponent(t.wiki);const r=await fetch(u,{signal:AbortSignal.timeout(10000)});if(!r.ok)throw Error();const result=await r.json();data=Object.values(result.query.pages).find(p=>p.thumbnail?.source);if(!data)throw Error();photoCache.set(t.wiki,data)}if(token!==photoToken)return;img.onload=()=>{if(token===photoToken){img.hidden=false;fallback.hidden=true}};img.onerror=()=>photoFallback(article,token);img.alt=t.name+' (area photograph)';img.src=data.thumbnail.source;credit.href=data.fullurl||article;credit.textContent=t.name+' · image source and credits';}catch(e){photoFallback(article,token)}}
-function photoFallback(url,token){if(token!==photoToken)return;$('photo').hidden=true;$('fallback').hidden=false;$('fallback').innerHTML=`<span>Photo unavailable here.<br><a target="_blank" rel="noopener" href="${esc(url)}">View location photos</a></span>`}
-function selectTrip(i){selected=i;const t=trips[i];setMap(t);locationPhoto(t);$('detail').innerHTML=`<h2>${esc(t.name)}</h2><p class="intro">${esc(t.intro)}</p><div class="stats"><div class="stat"><small>Drive from Auckland</small>${esc(t.drive)}</div><div class="stat"><small>Suggested stay</small>${esc(t.nights)}</div></div><div class="columns"><div class="panel"><h3>Things to do</h3><ul>${t.sights.map(s=>`<li>${esc(s)}</li>`).join('')}</ul><h3>Stay</h3><p>${esc(t.stay)}</p><a href="${esc(t.url)}" target="_blank" rel="noopener">Official details</a><h3 style="margin-top:18px">Before you go</h3><p>${esc(t.watch)}</p></div><div class="panel"><h3>Food & vibe</h3><p>${esc(t.foodnote)}</p>${t.foods.map(f=>`<div class="food"><a href="${esc(f[2])}" target="_blank" rel="noopener"><strong>${esc(f[0])}</strong></a><p>${esc(f[1])}</p>${f[3]?`<small>${esc(f[3])}</small>`:''}</div>`).join('')}</div></div><div class="actions"><a href="${esc($('maplink').href)}" target="_blank" rel="noopener">Destination map</a><button id="print">Print trip</button></div><p class="note">Check current access, opening hours and weather. Map and area photographs need internet access. Photo credits are linked above.</p>`;$('print').onclick=()=>window.print();renderList();try{history.replaceState(null,'','#trip-'+i)}catch(e){}}
-function changed(){const v=matches();if(v.length)selectTrip(v.some(x=>x.i===selected)?selected:v[0].i);else{renderList();$('detail').innerHTML='<div class="empty">No matches. Try another search or reset.</div>'}}
-$('search').oninput=changed;document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));changed()});$('reset').onclick=()=>{$('search').value='';filter='All';document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x.dataset.filter==='All'));changed()};window.addEventListener('resize',fitHeading);document.fonts.ready.then(fitHeading);fitHeading();const hash=location.hash.match(/^#trip-([0-7])$/);selectTrip(hash?Number(hash[1]):0);
-</script></body></html>
+<!doctype html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PLACES NEAR AUCKLAND THAT ARE NOT HAMILTON.</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#faf9f5;color:#17324d;font:15px/1.55 system-ui,sans-serif}header{background:#12354a;color:white;padding:24px;overflow:hidden}h1{font-family:Impact,"Arial Black",sans-serif;white-space:nowrap;line-height:1.12;margin:0;width:max-content;transform-origin:left center;font-size:88px;letter-spacing:-.025em}.layout{display:grid;grid-template-columns:290px minmax(0,1fr);aside{padding:20px;border-right:1px solid #dbe2df}input{width:100%;padding:11px;border:1px solid #c7d7d4;border-radius:8px;background:white;font:inherit}.filters{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.filter,.reset{border:1px solid #c7d7d4;background:white;border-radius:18px;padding:5px 10px;color:#17324d;font:inherit}.filter.active{background:#167d7b;color:white}.reset{font-size:12px}#count{font-size:12px;color:#5b707b}.trip{display:block;width:100%;text-align:left;background:white;border:1px solid #dbe2df;border-radius:12px;padding:14px;margin:10px 0;color:#17324d}.trip.active{border:2px solid #167d7b;background:#edf5f1}.trip strong{display:block;font-size:16px}.trip small{color:#5b707b}.media{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);height:420px}.mapWrap,.photo{position:relative;min-width:0;height:420px;background:#e4ece8;overflow:hidden}.mapWrap{border-right:2px solid white}iframe{width:100%;height:100%;border:0;display:block}.photo{margin:0}.photo img{width:100%;height:100%;object-fit:cover;display:block}.photo img[hidden]{display:none}.photo figcaption{position:absolute;bottom:0;left:0;right:0;background:#12354adb;padding:8px 12px;color:white;font-size:11px}.fallback{position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:20px}.fallback[hidden]{display:none}.fallback a{color:white}.maplink{position:absolute;bottom:12px;left:12px;padding:7px 10px;background:white;border-radius:7px;color:#17324d;font-size:11px}.detail{padding:25px;max-width:1200px}.detail h2{font-size:30px;line-height:1.2;margin:0 0 10px}.intro{color:#5b707b;margin-top:0}.stats{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.stat{padding:9px 14px;background:#edf3ef;border-radius:8px}.stat small{display:block;color:#5b707b}.columns{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{border:1px solid #dbe2df;border-radius:12px;padding:18px;background:white}h3{margin:0 0 8px}.panel p{margin:8px 0;font-size:14px}.food{padding:9px 0;border-top:1px solid #e0e7e3}.food p{margin:3px 0;font-size:14px}.food small{display:block;font-size:12px;color:#627477}.notes{font-size:12px;color:#627477}.actions{display:flex;gap:12px;margin-top:18px}.actions a,.actions button{border:1px solid #c7d7d4;border-radius:8px;padding:8px 12px;background:white;color:#146c6c;text-decoration:none}.empty{padding:30px}.button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #d3972e;outline-offset:3px}@media(max-width:850px){.layout{grid-template-columns:1fr}.aside{border-right:0;padding:14px}.triplist{display:flex;gap:10px;overflow:auto}.trip{min-width:210px;max-width:210px;margin:0}.media{height:330px}.detail{padding:20px}.columns{grid-template-columns:1fr}.panel{margin-bottom:12px}header{padding:20px 12px}.detail h2{font-size:26px}}@media print{aside,.media,.actions{display:none}.layout{display:block}.columns{display:block}.panel{margin-top:12px}header{background:white;color:#17324d}}
+  </style>
+</head>
+<body>
+  <header><h1>PLACES NEAR AUCKLAND THAT ARE NOT HAMILTON.</h1></header>
+  <div class="layout">
+    <aside>
+      <input id="search" aria-label="Search trips" placeholder="Search places or food">
+      <div class="filters">
+        <button class="filter active" data-filter="All">All</button>
+        <button class="filter" data-filter="Coast">Coast</button>
+        <button class="filter" data-filter="Lake">Lakes</button>
+        <button class="filter" data-filter="Walking">Walking</button>
+        <button class="filter" data-filter="Town">Town</button>
+      </div>
+      <button id="reset" class="reset">Reset</button>
+      <p id="count" aria-live="polite"></p>
+      <div id="list" class="triplist"></div>
+      <p class="notes">Drive times are estimates from the original guide. Check conditions and bookings.</p>
+    </aside>
+    <main>
+      <div class="media">
+        <div class="mapWrap">
+          <iframe id="map" title="OpenStreetMap destination map" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <a id="maplink" class="maplink" target="_blank" rel="noopener">Open OpenStreetMap</a>
+        </div>
+        <figure class="photo">
+          <img id="photo" alt="" hidden>
+          <div id="fallback" class="fallback" hidden>Loading location photo...</div>
+          <figcaption><a id="credit" target="_blank" rel="noopener">Location photo</a></figcaption>
+        </figure>
+      </div>
+      <section id="detail" class="detail" aria-live="polite"></section>
+    </main>
+  </div>
+  <script>
+    const trips = [
+      {name: 'Tāwharanui Regional Park', lat: -36.373, lng: 174.844, cat: ['coast'], drive: 'About 1½ hr', distance: '~90 km', stay: 'Auckland Council campground', effort: 'Low', tag: 'Closest coastal reset', query: 'Tawharanui Regional Park', intro: 'Beach, coastal walks and a Matakana lunch.', sights: ['Anchor Bay', 'Coastal walks', 'Matakana food stops'], watch: 'Book the campground. Check current park access and swimming advice.', url: 'https://www.aucklandcouncil.govt.nz/parks-recreation/stay-at-park/Pages/default.aspx', category: 'Coast', nights: '1–3 nights', foodnote: 'Brewery lunch, estuary-side brunch, then gelato.', wiki: 'Tāwharanui Regional Park', foods: [['Sawmill Brewery + Smoke Room', 'Craft beer and sharing plates. The long-lunch pick.', 'https://www.sawmillbrewery.co.nz/',''], ['The Farmers Daughter', 'Estuary-side brunch or lunch.', 'https://thefarmersdaughteromaha.co.nz/the-daughter/','']]},
+      {name: 'Ōtāmure Bay, Whananaki', lat: -35.492, lng: 174.461, cat: ['coast'], drive: 'About 3½ hr', distance: '~225 km', stay: 'DOC campsite', effort: 'Low', tag: 'Northland beach camp', query: 'Otamure Bay Whananaki New Zealand', intro: 'A beach-first weekend. Arrive stocked and stay put.', sights: ['Beachfront camping', 'Coastal walks', 'An unhurried day at camp'], watch: 'Book ahead. Check gate hours and campsite rules.', url: 'https://www.doc.govt.nz/parks-and-recreation/places-to-go/northland/places/whananaki-area/things-to-do/otamure-bay-whananaki-campsite/', category: 'Coast', nights: '2 nights', foodnote: 'BYO everything. Easy camp dinners, breakfast and beach-day snacks.', wiki: 'Whananaki', foods: []},
+      {name: 'Waitawau Bay', lat: -36.60586488, lng: 175.53701524, cat: ['coast'], drive: 'About 4½ hr', distance: '~265 km', stay: 'DOC campsite', effort: 'Low', tag: 'Remote Coromandel coast', query: 'Waitawau Bay Coromandel New Zealand', intro: 'A longer coastal stay where the campsite is the destination.', sights: ['Waitawau Bay beach', 'Bush walks', 'Time at camp'], watch: 'Book ahead and check the winding gravel-road approach. Carry all campsite meals.', url: 'https://www.doc.govt.nz/parks-and-recreation/places-to-go/coromandel/places/northern-coromandel/things-to-do/waitawau-bay-campsite/', category: 'Coast', nights: '3 nights', foodnote: 'One food pick.', wiki: 'Waitawau Bay', foods: [['Lukes Kitchen', 'Iconic woodfired pizza and laid-back coastal vibes. Kuaotunu is a separate outing.', 'https://www.lukeskitchen.co.nz/home-1','']]},
+      {name: 'The Pinnacles', lat: -36.95, lng: 175.651, cat: ['walking'], drive: 'About 2½ hr', distance: '~145 km', stay: 'Pinnacles Hut or DOC valley camps', effort: 'Medium-high', tag: 'Best overnight tramp', query: 'Pinnacles Hut Kaueranga Valley New Zealand', intro: 'An overnight walk, not a drive-up stay.', sights: ['Kauaeranga Kauri Trails', 'Pinnacles Hut', 'Optional summit in suitable conditions'], watch: 'Book the hut. Check weather and track alerts. Drive to the road end, not the hut.', url: 'https://www.doc.govt.nz/parks-and-recreation/places-to-go/coromandel/places/coromandel-forest-park/kauaeranga-valley/', category: 'Walking', nights: '1 night', foodnote: 'BYO all meals and trail snacks.', wiki: 'The Pinnacles (Coromandel)', foods: []}
+    ];
+
+    const $ = id => document.getElementById(id), esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    let selected = 0, filter = 'All', photoToken = 0;
+    const photoCache = new Map();
+
+    function fitHeading(){
+      const h = document.querySelector('h1');
+      const header = h.parentElement;
+      const style = getComputedStyle(header);
+      const w = header.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+      h.style.fontSize = '88px';
+      let size = 88;
+      while (h.scrollWidth > w && size > 24) {
+        size -= 1;
+        h.style.fontSize = size + 'px';
+      }
+      header.style.paddingTop = Math.max(20, size * .55) + 'px';
+      header.style.paddingBottom = Math.max(20, size * .55) + 'px';
+    }
+
+    function matches(){
+      const q = $('search').value.trim().toLowerCase();
+      return trips.map((t, i) => ({t, i})).filter(({t}) => (filter === 'All' || t.category === filter) && (!q || JSON.stringify([t.name, t.foods, t.sights]).toLowerCase().includes(q)));
+    }
+
+    function renderList(){
+      const v = matches();
+      $('count').textContent = v.length + ' places';
+      $('list').innerHTML = v.map(({t, i}) => `<button class="trip ${i === selected ? 'active' : ''}" data-trip="${i}" aria-pressed="${i === selected}"><strong>${esc(t.name)}</strong><small>${esc(t.drive)} • ${esc(t.nights)}</small></button>`).join('');
+      document.querySelectorAll('[data-trip]').forEach(b => b.onclick = () => selectTrip(Number(b.dataset.trip)));
+    }
+
+    function setMap(t){
+      const span = .065;
+      const bbox = [t.lng - span, t.lat - span * .65, t.lng + span, t.lat + span * .65].join(',');
+      $('map').src = 'https://www.openstreetmap.org/export/embed.html?bbox=' + encodeURIComponent(bbox) + '&layer=mapnik&marker=' + encodeURIComponent(t.lat + ',' + t.lng);
+      $('maplink').href = 'https://www.openstreetmap.org/?mlat=' + t.lat + '&mlon=' + t.lng + '#map=12/' + t.lat + '/' + t.lng;
+    }
+
+    async function fetchDocImages(t){
+      const q = encodeURIComponent(t.query || t.name);
+      const docUrl = 'https://www.doc.govt.nz/search/?q=' + q;
+      const res = await fetch(docUrl, { mode: 'cors' });
+      if (!res.ok) return null;
+      const html = await res.text();
+      const matches = [...html.matchAll(/<img[^>]+src=["']([^"']+)["'][^>]*>/gi)];
+      const src = matches.map(m => m[1]).find(url => /\.(png|jpe?g|webp|avif|gif)(\?.*)?$/i.test(url));
+      return src || null;
+    }
+
+    async function fetchWikipediaImage(t){
+      const title = encodeURIComponent(t.wiki || t.name);
+      const url = 'https://en.wikipedia.org/w/api.php?origin=*' +
+        '&action=query&format=json&prop=pageimages|info&inprop=url&piprop=thumbnail&pithumbsize=1200&redirects=1&titles=' + title;
+      const res = await fetch(url, { mode: 'cors' });
+      if (!res.ok) throw new Error('Wikipedia request failed');
+      const data = await res.json();
+      const page = Object.values(data.query.pages).find(p => p.thumbnail);
+      if (!page || !page.thumbnail || !page.thumbnail.source) return null;
+      return page.thumbnail.source;
+    }
+
+    async function locationPhoto(t){
+      const token = ++photoToken;
+      const img = $('photo');
+      const fallback = $('fallback');
+      const credit = $('credit');
+      img.hidden = true;
+      fallback.hidden = false;
+      fallback.textContent = 'Loading location photo...';
+      credit.textContent = 'Location photo';
+      credit.href = '#';
+
+      try {
+        let data = photoCache.get(t.wiki || t.name);
+        if (!data) {
+          try {
+            data = await fetchDocImages(t);
+          } catch (e) {
+            data = null;
+          }
+          if (!data) {
+            try {
+              data = await fetchWikipediaImage(t);
+            } catch (e) {
+              data = null;
+            }
+          }
+          if (data) photoCache.set(t.wiki || t.name, data);
+        }
+
+        if (token !== photoToken) return;
+        if (!data) {
+          throw new Error('No photo found');
+        }
+
+        img.onload = () => {
+          if (token !== photoToken) return;
+          img.hidden = false;
+          fallback.hidden = true;
+        };
+        img.onerror = () => {
+          if (token !== photoToken) return;
+          fallback.hidden = false;
+          fallback.innerHTML = '<span>Photo unavailable here.<br><a target="_blank" rel="noopener" href="https://www.doc.govt.nz/">View location photos</a></span>';
+        };
+        img.src = data;
+        credit.textContent = 'Photo source: DOC / Wikipedia';
+        credit.href = 'https://www.doc.govt.nz/';
+      } catch (e) {
+        if (token !== photoToken) return;
+        img.hidden = true;
+        fallback.hidden = false;
+        fallback.innerHTML = '<span>Photo unavailable here.<br><a target="_blank" rel="noopener" href="https://www.doc.govt.nz/">View location photos</a></span>';
+      }
+    }
+
+    function selectTrip(i){
+      selected = i;
+      const t = trips[i];
+      setMap(t);
+      locationPhoto(t);
+      $('detail').innerHTML = `<h2>${esc(t.name)}</h2><p class="intro">${esc(t.intro)}</p><div class="stats"><div class="stat"><small>Drive from Auckland</small>${esc(t.drive)}</div><div class="stat"><small>Suggested stay</small>${esc(t.nights)}</div></div><div class="columns"><div class="panel"><h3>Things to do</h3><ul>${t.sights.map(s => `<li>${esc(s)}</li>`).join('')}</ul></div><div class="panel"><h3>Stay</h3><p>${esc(t.stay)}</p><p>${esc(t.watch)}</p></div></div><div class="actions"><a href="${esc(t.url)}" target="_blank" rel="noopener">Official details</a><button id="print">Print trip</button></div>`;
+      $('print').onclick = () => window.print();
+      renderList();
+    }
+
+    function changed(){
+      const v = matches();
+      if (v.length) {
+        selectTrip(v.some(x => x.i === selected) ? selected : v[0].i);
+      } else {
+        renderList();
+        $('detail').innerHTML = '<div class="empty">No matches. Try another search or reset.</div>';
+      }
+    }
+
+    $('search').oninput = changed;
+    document.querySelectorAll('[data-filter]').forEach(b => b.onclick = () => {
+      filter = b.dataset.filter;
+      document.querySelectorAll('[data-filter]').forEach(x => x.classList.toggle('active', x === b));
+      changed();
+    });
+    $('reset').onclick = () => {
+      $('search').value = '';
+      filter = 'All';
+      document.querySelectorAll('[data-filter]').forEach(x => x.classList.toggle('active', x.dataset.filter === 'All'));
+      changed();
+    };
+
+    window.addEventListener('resize', fitHeading);
+    document.fonts?.ready.then(fitHeading);
+    fitHeading();
+    selectTrip(0);
+  </script>
+</body>
+</html>
